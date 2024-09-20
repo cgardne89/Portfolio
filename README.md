@@ -1,6 +1,6 @@
 # Cybersecurity Portfolio
 
-Welcome to my GitHub portfolio! I'm currently studying Cybersecurity and pursuing a Google Cybersecurity Certificate. After spending time on disability, I’m taking active steps to improve my life and embark on a rewarding career in this dynamic field.
+Welcome to my GitHub portfolio! I'm currently studying Cybersecurity and pursuing a Google Cybersecurity Certificate. After spending time on disability, I’m taking active steps to improve my life.
 
 ## About Me
 
@@ -26,15 +26,10 @@ Welcome to my GitHub portfolio! I'm currently studying Cybersecurity and pursuin
 - Networking and Monitoring
 - Web Scraping and Python Programming
 
-## Projects
-
-### Port Scanner
-
-This project is a simple port scanner using Python's `socket` library. It allows users to either find the IP address of a given host or scan for open ports within a specified range.
 
 ## Goals
 
-I am highly motivated and committed to learning as much as possible in the cybersecurity field. I look forward to applying my skills and knowledge in a professional setting.
+I am highly motivated and committed to learning as much as possible in the cybersecurity field.
 
-Feel free to explore my repositories and reach out if you have any questions or collaboration opportunities!
+Feel free to explore my repositories and reach out if you have any questions.
 
