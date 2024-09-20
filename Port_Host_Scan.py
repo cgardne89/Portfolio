@@ -7,7 +7,6 @@ while True:
     # Asks user to input what type of scan they want
     Scan_Type = input("Scan Type: ")
     Scan_Type = Scan_Type.capitalize()
-    print(Scan_Type)
     # If input host for the scan type it will get the IP address of said host
     if (Scan_Type == "Host"):
         Host = input("Host Name: ")
