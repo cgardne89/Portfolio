@@ -1,6 +1,6 @@
 # Cybersecurity Portfolio
 
-Welcome to my GitHub portfolio! I'm currently studying Cybersecurity and pursuing a Google Cybersecurity Certificate. After spending time on disability, I’m taking active steps to improve my life.
+Welcome to my GitHub portfolio! I'm currently studying Cybersecurity and pursuing a Google Cybersecurity Certificate.
 
 ## About Me
 
