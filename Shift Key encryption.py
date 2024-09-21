@@ -34,13 +34,13 @@ while True:
             if (char.isnumeric()):
                 number = int(char) - shiftKey
                 if (number) > 0 and (number) < 10:
-                    totalDecrypted.append(number)
+                    totalDecrypted.append(str(number))
                 if (number) == 0:
                     number = number + 9
-                    totalDecrypted.append(number)
+                    totalDecrypted.append(str(number))
                 elif (number) >= 10 or (number) <= -1:
                     number = number % 9
-                    totalDecrypted.append(number)
+                    totalDecrypted.append(str(number))
 
 
         # Result
@@ -66,6 +66,7 @@ while True:
             Letter_to_Encrypt = ["A", "B", "C", "D", "E", "F", "G", "H", "I", 
                     "J", "K", "L", "M", "N", "O", "P", "Q", "R",
                     "S", "T", "U", "V", "W", "X", "Y", "Z"]
+            
             if (Letter_to_Encrypt.__contains__(char)):
                 charPos = Letter_to_Encrypt.index(char)
                 Encrypted = shiftKey + int(charPos)
@@ -75,10 +76,10 @@ while True:
             if (char.isnumeric()):
                 number = int(char) + shiftKey
                 if (number) < 10:
-                    totalEncrypted.append(number)
+                    totalEncrypted.append(str(number))
                 if (number) >= 10: 
                     number = number % 9
-                    totalEncrypted.append(number)
+                    totalEncrypted.append(str(number))
                 
         # Result
         print("".join(totalEncrypted))
