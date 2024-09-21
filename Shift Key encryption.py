@@ -17,30 +17,24 @@ def check_encryptOrDecrypt(ciphered):
     elif (Encrypt_or_Decrypt) == "Encrypt":
         ciphered = ciphered + shiftKey
     return ciphered
-
 def do_Symbol_Wrapping(ciphered):
     if (ciphered) <= 26 or (ciphered) <= 0:
         ciphered = ciphered % 27
     return ciphered 
-
-
 def do_Letter_Wrapping(ciphered):
     if (ciphered) >= 25 or (ciphered) <= 0:
         ciphered = ciphered % 26
     return ciphered
-
 def do_Number_Wrapping(ciphered):
     if (ciphered) >= 0 and (ciphered) <= 9:
         return ciphered
     if (ciphered) > 9 or (ciphered) < 0:
         ciphered = ciphered % 10
         return ciphered
-    
 def getLetters():
     charPos = Letters.index(char)
     ciphered = int(charPos)
     return ciphered
-
 def getSymbols():
     charPos = Symbols.index(char)
     ciphered = int(charPos)
@@ -58,7 +52,6 @@ while True:
         phrase = input("Phrase: ")
         phrase = phrase.upper()
         shiftKey = int(input("Shift: "))
-
         totalCiphered = []
 
         # Cipher Logic
