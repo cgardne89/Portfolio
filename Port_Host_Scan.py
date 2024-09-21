@@ -1,6 +1,5 @@
 # Using socket library to check open ports and to get the IP address from a host name
 
-
 import socket
 
 while True:
