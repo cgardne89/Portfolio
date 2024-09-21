@@ -1,5 +1,11 @@
 # Shift Key Encryption and Decryption
-    
+
+
+
+Letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", 
+        "J", "K", "L", "M", "N", "O", "P", "Q", "R",
+        "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
     
 while True:
     
@@ -7,11 +13,11 @@ while True:
     Encrypt_or_Decrypt = input("Encrypt or Decrypt: ")
     Encrypt_or_Decrypt = Encrypt_or_Decrypt.capitalize()
 
-    if (Encrypt_or_Decrypt) == "Decrypt":
+    if (Encrypt_or_Decrypt) == "Decrypt" or (Encrypt_or_Decrypt) == "Encrypt":
         
         
-        to_Decrypt = input("What to decrypt: ")
-        to_Decrypt = to_Decrypt.upper()
+        to_Cryption = input("Phrase: ")
+        to_Cryption = to_Cryption.upper()
         shiftKey = int(input("Shift Key amount: "))
 
         
@@ -19,20 +25,23 @@ while True:
 
 
         # Cipher Logic
-        for char in to_Decrypt:
+        for char in to_Cryption:
 
-            Letter_to_Decrypt = ["A", "B", "C", "D", "E", "F", "G", "H", "I", 
-                    "J", "K", "L", "M", "N", "O", "P", "Q", "R",
-                    "S", "T", "U", "V", "W", "X", "Y", "Z"]
-            if (Letter_to_Decrypt.__contains__(char)):
-                charPos = Letter_to_Decrypt.index(char)
 
-                Decrypted = int(charPos) - shiftKey
-                Decryption = Letter_to_Decrypt[Decrypted]
+            if (Letters.__contains__(char)):
+                charPos = Letters.index(char)
+                if (Encrypt_or_Decrypt) == "Decrypt":
+                    crypted = int(charPos) - shiftKey
+                if (Encrypt_or_Decrypt) == "Encrypt":
+                    crypted = int(charPos) + shiftKey
+                Decryption = Letters[crypted]
                 totalDecrypted.append(Decryption)
 
             if (char.isnumeric()):
-                number = int(char) - shiftKey
+                if (Encrypt_or_Decrypt) == "Decrypt":
+                    number = int(char) - shiftKey
+                if (Encrypt_or_Decrypt) == "Encrypt":
+                    number = int(char) + shiftKey
                 if (number) > 0 and (number) < 10:
                     totalDecrypted.append(str(number))
                 if (number) == 0:
@@ -45,44 +54,6 @@ while True:
 
         # Result
         print("".join(totalDecrypted))
-        break
-
-
-
-    if (Encrypt_or_Decrypt) == "Encrypt":
-        
-        
-        to_Encrypt = input("What to encrypt: ")
-        to_Encrypt = to_Encrypt.upper()
-        shiftKey = int(input("Shift Key amount: "))
-
-        
-        
-        totalEncrypted = []
-
-        # Cipher Logic
-        for char in to_Encrypt:
-            
-            Letter_to_Encrypt = ["A", "B", "C", "D", "E", "F", "G", "H", "I", 
-                    "J", "K", "L", "M", "N", "O", "P", "Q", "R",
-                    "S", "T", "U", "V", "W", "X", "Y", "Z"]
-            
-            if (Letter_to_Encrypt.__contains__(char)):
-                charPos = Letter_to_Encrypt.index(char)
-                Encrypted = shiftKey + int(charPos)
-                Encryption = Letter_to_Encrypt[Encrypted]
-                totalEncrypted.append(Encryption)
-
-            if (char.isnumeric()):
-                number = int(char) + shiftKey
-                if (number) < 10:
-                    totalEncrypted.append(str(number))
-                if (number) >= 10: 
-                    number = number % 9
-                    totalEncrypted.append(str(number))
-                
-        # Result
-        print("".join(totalEncrypted))
         break
 
     print("\033[91mError:\033[0m encrypt or decrypt")
