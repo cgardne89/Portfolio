@@ -31,20 +31,17 @@ while True:
                 Decryption = Letter_to_Decrypt[Decrypted]
                 totalDecrypted.append(Decryption)
 
-            elif (char.isnumeric() < -1):
+            if (char.isnumeric()):
                 number = int(char) - shiftKey
                 if (number) > 0 and number < 10:
                     totalDecrypted.append(number)
-                elif (number) == 0:
+                if (number) == 0:
                     number = number + 9
                     totalDecrypted.append(number)
                 else:
                     number = number % 9
                     totalDecrypted.append(number)
-            else:
-                print("coming soon")
-                quit()
-                break
+
 
         # Result
         print(" ".join(str(totalDecrypted)))
@@ -74,17 +71,15 @@ while True:
                 Encrypted = shiftKey + int(charPos)
                 Encryption = Letter_to_Encrypt[Encrypted]
                 totalEncrypted.append(Encryption)
-            if (char.isnumeric() < -1):
+
+            if (char.isnumeric()):
                 number = int(char) + shiftKey
                 if (number) < 10:
                     totalEncrypted.append(number)
                 else: 
                     number = number % 9
                     totalEncrypted.append(number)
-            else:
-                print("coming soon")
-                quit()
-                break
+                
         # Result
         print("".join(str(totalEncrypted)))
         break
