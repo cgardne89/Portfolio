@@ -16,44 +16,52 @@ while True:
     if (Encrypt_or_Decrypt) == "Decrypt" or (Encrypt_or_Decrypt) == "Encrypt":
         
         
-        to_Cryption = input("Phrase: ")
-        to_Cryption = to_Cryption.upper()
+        phrase = input("Phrase: ")
+        phrase = phrase.upper()
         shiftKey = int(input("Shift Key amount: "))
 
         
-        totalDecrypted = []
+        totalCiphered = []
 
 
         # Cipher Logic
-        for char in to_Cryption:
+        for char in phrase:
 
 
-            if (Letters.__contains__(char)):
+            if char in Letters:
+
+                # Function this
                 charPos = Letters.index(char)
                 if (Encrypt_or_Decrypt) == "Decrypt":
-                    crypted = int(charPos) - shiftKey
+                    ciphered = int(charPos) - shiftKey
                 if (Encrypt_or_Decrypt) == "Encrypt":
-                    crypted = int(charPos) + shiftKey
-                Decryption = Letters[crypted]
-                totalDecrypted.append(Decryption)
+                    ciphered = int(charPos) + shiftKey
+                    
+                # Function this
+                getCiph = Letters[ciphered]
+                totalCiphered.append(getCiph)
 
             if (char.isnumeric()):
+
+                # Function this
                 if (Encrypt_or_Decrypt) == "Decrypt":
                     number = int(char) - shiftKey
                 if (Encrypt_or_Decrypt) == "Encrypt":
                     number = int(char) + shiftKey
+
+                # function this
                 if (number) > 0 and (number) < 10:
-                    totalDecrypted.append(str(number))
+                    totalCiphered.append(str(number))
                 if (number) == 0:
                     number = number + 9
-                    totalDecrypted.append(str(number))
+                    totalCiphered.append(str(number))
                 elif (number) >= 10 or (number) <= -1:
                     number = number % 9
-                    totalDecrypted.append(str(number))
+                    totalCiphered.append(str(number))
 
 
         # Result
-        print("".join(totalDecrypted))
+        print("".join(totalCiphered).capitalize())
         break
 
     print("\033[91mError:\033[0m encrypt or decrypt")
