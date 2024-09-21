@@ -85,6 +85,7 @@ while True:
                 # add numbers to a list
                 totalCiphered.append(str(ciphered))
             else:
+                # more error handling
                 print("\033[91mError:\033[0m Unknown character\nReport here: https://github.com/cgardne89")
                 break
 
