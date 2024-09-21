@@ -1,5 +1,6 @@
 # Shift Key Encryption and Decryption
 
+# Lists
 Letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", 
         "J", "K", "L", "M", "N", "O", "P", "Q", "R",
         "S", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -9,6 +10,7 @@ Symbols = ["!", "@", "#", "$", "%", "^", "&", "*",
            "{", "}", "|", "\\", ":", ";", "\"", "'", 
            "<", ">", ",", ".", "?", "/"]
 
+# modules
 def check_encryptOrDecrypt(ciphered):
     if (Encrypt_or_Decrypt) == "Decrypt":
         ciphered = ciphered - shiftKey
@@ -43,6 +45,7 @@ def getSymbols():
     charPos = Symbols.index(char)
     ciphered = int(charPos)
     return ciphered
+
 
 while True:
 
