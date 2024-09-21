@@ -63,40 +63,31 @@ while True:
 
         # Cipher Logic
         for char in phrase:
+
             if char in Letters:
-
                 ciphered = getLetters()
-
                 # check users input
                 ciphered = check_encryptOrDecrypt(ciphered)
-
                 # wrapping letters list from 0 - 25 (A - Z)
                 ciphered = Letters[do_Letter_Wrapping(ciphered)]
-
                 # add letters to a list
                 totalCiphered.append(ciphered)
-            if char in Symbols:
-                
-                ciphered = getSymbols()
 
+            if char in Symbols:
+                ciphered = getSymbols()
                 # check users input
                 ciphered = check_encryptOrDecrypt(ciphered)
-
                 # wrapping symbol list 0 - 26
                 ciphered = Symbols[do_Symbol_Wrapping(ciphered)]
-
                 # add symbols to a list
                 totalCiphered.append(ciphered)
 
             if (char.isnumeric()):
                 ciphered = int(char)
-
                 # check for users input
                 ciphered = check_encryptOrDecrypt(ciphered)
-
                 # wrapping numbers around 1 - 9
                 ciphered = do_Number_Wrapping(ciphered)
-
                 # add numbers to a list
                 totalCiphered.append(str(ciphered))
 
@@ -104,4 +95,5 @@ while True:
         print("".join(totalCiphered).capitalize())
         break
 
+    # Some error handling
     print("\033[91mError:\033[0m encrypt or decrypt")
