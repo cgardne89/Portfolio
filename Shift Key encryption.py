@@ -3,19 +3,17 @@
 Letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", 
         "J", "K", "L", "M", "N", "O", "P", "Q", "R",
         "S", "T", "U", "V", "W", "X", "Y", "Z"]
-symbols = ["!", "@", "#", "$", "%", "^", "&", "*", 
+
+Symbols = ["!", "@", "#", "$", "%", "^", "&", "*", 
            "(", ")", "-", "_", "=", "+", "[", "]", 
            "{", "}", "|", "\\", ":", ";", "\"", "'", 
            "<", ">", ",", ".", "?", "/"]
 
-
-
 def check_encryptOrDecrypt(ciphered):
     if (Encrypt_or_Decrypt) == "Decrypt":
         ciphered = ciphered - shiftKey
-    else:
+    elif (Encrypt_or_Decrypt) == "Encrypt":
         ciphered = ciphered + shiftKey
-
     return ciphered
 
 def do_Letter_Wrapping(ciphered):
@@ -29,9 +27,14 @@ def do_Number_Wrapping(ciphered):
     if (ciphered) > 9 or (ciphered) < 0:
         ciphered = ciphered % 10
         return ciphered
+    
+def getLetters():
+    charPos = Letters.index(char)
+    ciphered = int(charPos)
+    return ciphered
 
 while True:
-    
+
     # User initial input
     Encrypt_or_Decrypt = input("Encrypt or Decrypt: ")
     Encrypt_or_Decrypt = Encrypt_or_Decrypt.capitalize()
@@ -40,24 +43,23 @@ while True:
         
         phrase = input("Phrase: ")
         phrase = phrase.upper()
-        shiftKey = int(input("Shift Key amount: "))
+        shiftKey = int(input("Shift: "))
 
-        
         totalCiphered = []
-
 
         # Cipher Logic
         for char in phrase:
             if char in Letters:
-                # Function this
-                charPos = Letters.index(char)
-                ciphered = int(charPos)
 
+                ciphered = getLetters()
 
-                # create wrapping
+                # check users input
                 ciphered = check_encryptOrDecrypt(ciphered)
+
+                # wrapping letters list from 0 - 25 (A - Z)
                 ciphered = Letters[do_Letter_Wrapping(ciphered)]
 
+                # add letters to a list
                 totalCiphered.append(ciphered)
 
             if (char.isnumeric()):
@@ -68,8 +70,9 @@ while True:
 
                 # wrapping numbers around 1 - 9
                 ciphered = do_Number_Wrapping(ciphered)
-                totalCiphered.append(str(ciphered))
 
+                # add numbers to a list
+                totalCiphered.append(str(ciphered))
 
         # Result
         print("".join(totalCiphered).capitalize())
