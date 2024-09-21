@@ -44,7 +44,7 @@ while True:
 
 
         # Result
-        print("".join(str(totalDecrypted)))
+        print("".join(totalDecrypted))
         break
 
 
@@ -81,7 +81,7 @@ while True:
                     totalEncrypted.append(number)
                 
         # Result
-        print("".join(str(totalEncrypted)))
+        print("".join(totalEncrypted))
         break
 
     print("\033[91mError:\033[0m encrypt or decrypt")
