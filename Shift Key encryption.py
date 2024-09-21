@@ -16,6 +16,12 @@ def check_encryptOrDecrypt(ciphered):
         ciphered = ciphered + shiftKey
     return ciphered
 
+def do_Symbol_Wrapping(ciphered):
+    if (ciphered) <= 26 or (ciphered) <= 0:
+        ciphered = ciphered % 27
+    return ciphered 
+
+
 def do_Letter_Wrapping(ciphered):
     if (ciphered) >= 25 or (ciphered) <= 0:
         ciphered = ciphered % 26
@@ -30,6 +36,11 @@ def do_Number_Wrapping(ciphered):
     
 def getLetters():
     charPos = Letters.index(char)
+    ciphered = int(charPos)
+    return ciphered
+
+def getSymbols():
+    charPos = Symbols.index(char)
     ciphered = int(charPos)
     return ciphered
 
@@ -60,6 +71,18 @@ while True:
                 ciphered = Letters[do_Letter_Wrapping(ciphered)]
 
                 # add letters to a list
+                totalCiphered.append(ciphered)
+            if char in Symbols:
+                
+                ciphered = getSymbols()
+
+                # check users input
+                ciphered = check_encryptOrDecrypt(ciphered)
+
+                # wrapping symbol list 0 - 26
+                ciphered = Symbols[do_Symbol_Wrapping(ciphered)]
+
+                # add symbols to a list
                 totalCiphered.append(ciphered)
 
             if (char.isnumeric()):
