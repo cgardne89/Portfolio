@@ -4,7 +4,6 @@
 Letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", 
         "J", "K", "L", "M", "N", "O", "P", "Q", "R",
         "S", "T", "U", "V", "W", "X", "Y", "Z"]
-
 Symbols = ["!", "@", "#", "$", "%", "^", "&", "*", 
            "(", ")", "-", "_", "=", "+", "[", "]", 
            "{", "}", "|", "\\", ":", ";", "\"", "'", 
@@ -54,6 +53,8 @@ while True:
         shiftKey = int(input("Shift: "))
         totalCiphered = []
 
+
+
         # Cipher Logic
         for char in phrase:
 
@@ -66,7 +67,7 @@ while True:
                 # add letters to a list
                 totalCiphered.append(ciphered)
 
-            if char in Symbols:
+            elif char in Symbols:
                 ciphered = getSymbols()
                 # check users input
                 ciphered = check_encryptOrDecrypt(ciphered)
@@ -75,7 +76,7 @@ while True:
                 # add symbols to a list
                 totalCiphered.append(ciphered)
 
-            if (char.isnumeric()):
+            elif (char.isnumeric()):
                 ciphered = int(char)
                 # check for users input
                 ciphered = check_encryptOrDecrypt(ciphered)
@@ -83,6 +84,9 @@ while True:
                 ciphered = do_Number_Wrapping(ciphered)
                 # add numbers to a list
                 totalCiphered.append(str(ciphered))
+            else:
+                print("\033[91mError:\033[0m Unknown character\nReport here: https://github.com/cgardne89")
+                break
 
         # Result
         print("".join(totalCiphered).capitalize())
