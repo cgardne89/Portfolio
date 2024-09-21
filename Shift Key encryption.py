@@ -33,18 +33,18 @@ while True:
 
             if (char.isnumeric()):
                 number = int(char) - shiftKey
-                if (number) > 0 and number < 10:
+                if (number) > 0 and (number) < 10:
                     totalDecrypted.append(number)
                 if (number) == 0:
                     number = number + 9
                     totalDecrypted.append(number)
-                else:
+                elif (number) >= 10 or (number) <= -1:
                     number = number % 9
                     totalDecrypted.append(number)
 
 
         # Result
-        print(" ".join(str(totalDecrypted)))
+        print("".join(str(totalDecrypted)))
         break
 
 
@@ -76,7 +76,7 @@ while True:
                 number = int(char) + shiftKey
                 if (number) < 10:
                     totalEncrypted.append(number)
-                else: 
+                if (number) >= 10: 
                     number = number % 9
                     totalEncrypted.append(number)
                 
