@@ -1,6 +1,3 @@
-# Portfolio
-
-Welcome to my GitHub portfolio! I'm currently studying Cybersecurity and pursuing a Google Cybersecurity Certificate.
 
 ## About Me
 
