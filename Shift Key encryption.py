@@ -8,6 +8,7 @@ Symbols = ["!", "@", "#", "$", "%", "^", "&", "*",
            "(", ")", "-", "_", "=", "+", "[", "]", 
            "{", "}", "|", "\\", ":", ";", "\"", "'", 
            "<", ">", ",", ".", "?", "/"]
+Spaces = [" "]
 
 # modules
 def check_encryptOrDecrypt(ciphered):
@@ -39,7 +40,6 @@ def getSymbols():
     ciphered = int(charPos)
     return ciphered
 
-
 while True:
 
     # User initial input
@@ -66,7 +66,8 @@ while True:
                 ciphered = Letters[do_Letter_Wrapping(ciphered)]
                 # add letters to a list
                 totalCiphered.append(ciphered)
-
+            elif char in Spaces:
+                totalCiphered.append(" ")
             elif char in Symbols:
                 ciphered = getSymbols()
                 # check users input
@@ -75,7 +76,6 @@ while True:
                 ciphered = Symbols[do_Symbol_Wrapping(ciphered)]
                 # add symbols to a list
                 totalCiphered.append(ciphered)
-
             elif (char.isnumeric()):
                 ciphered = int(char)
                 # check for users input
@@ -84,10 +84,6 @@ while True:
                 ciphered = do_Number_Wrapping(ciphered)
                 # add numbers to a list
                 totalCiphered.append(str(ciphered))
-            else:
-                # more error handling
-                print("\033[91mError:\033[0m Unknown character\nReport here: https://github.com/cgardne89")
-                break
 
         # Result
         print("".join(totalCiphered).capitalize())
