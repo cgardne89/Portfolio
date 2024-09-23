@@ -18,7 +18,7 @@ def do_Symbol_Wrapping(ciphered):
 def do_Letter_Wrapping(ciphered):
     return ciphered % len(Letters)
 def do_Number_Wrapping(ciphered):
-        return ciphered % 10
+    return ciphered % 10
 def getDigits(char):
     return int(Digits.index(char))
 def getLetters(char):
