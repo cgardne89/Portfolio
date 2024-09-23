@@ -27,15 +27,25 @@ def getSymbols(char):
     return int(Symbols.index(char))
 
 while True:
+        # User initial inputs
+        while True:
+            
+            Encrypt_or_Decrypt = input("Encrypt or Decrypt: ").capitalize()
 
-    # User initial input
-    Encrypt_or_Decrypt = input("Encrypt or Decrypt: ").capitalize()
-
-    if (Encrypt_or_Decrypt) == "Decrypt" or (Encrypt_or_Decrypt) == "Encrypt":
+            if (Encrypt_or_Decrypt) != "Decrypt" and (Encrypt_or_Decrypt) != "Encrypt":
+                print("Error: Try Encrypt or Decrypt" + Encrypt_or_Decrypt)
+                continue
+            break
         
         phrase = input("Phrase: ")
         phrase = phrase.upper()
-        shiftKey = int(input("Shift: "))
+        while True:
+            shiftKey = (input("Shift: "))
+            if not shiftKey.isnumeric():
+                print("Error: You need to enter a postive number!")
+                continue
+            break
+        shiftKey = int(shiftKey)
         totalCiphered = []
 
 
@@ -73,6 +83,3 @@ while True:
         # Result
         print("".join(totalCiphered).capitalize())
         break
-
-    # Some error handling
-    print("\033[91mError:\033[0m encrypt or decrypt")
