@@ -5,42 +5,31 @@ import string
 Letters = list(string.ascii_uppercase)
 Symbols = list(string.punctuation)
 Spaces = list(string.whitespace)
+Digits = list(string.digits)
 
 # modules
-def check_encryptOrDecrypt(ciphered):
-    if (Encrypt_or_Decrypt) == "Decrypt":
-        ciphered = ciphered - shiftKey
-    elif (Encrypt_or_Decrypt) == "Encrypt":
-        ciphered = ciphered + shiftKey
-    return ciphered
+def check_encryptOrDecrypt(ciphered, action, shiftKey):
+    if action == "Decrypt":
+        return ciphered - shiftKey
+    elif action == "Encrypt":
+        return ciphered + shiftKey
 def do_Symbol_Wrapping(ciphered):
-    if (ciphered) <= 26 or (ciphered) <= 0:
-        ciphered = ciphered % 27
-    return ciphered 
+    return ciphered % len(Symbols)
 def do_Letter_Wrapping(ciphered):
-    if (ciphered) >= 25 or (ciphered) <= 0:
-        ciphered = ciphered % 26
-    return ciphered
+    return ciphered % len(Letters)
 def do_Number_Wrapping(ciphered):
-    if (ciphered) >= 0 and (ciphered) <= 9:
-        return ciphered
-    if (ciphered) > 9 or (ciphered) < 0:
-        ciphered = ciphered % 10
-        return ciphered
-def getLetters():
-    charPos = Letters.index(char)
-    ciphered = int(charPos)
-    return ciphered
-def getSymbols():
-    charPos = Symbols.index(char)
-    ciphered = int(charPos)
-    return ciphered
+        return ciphered % 10
+def getDigits(char):
+    return int(Digits.index(char))
+def getLetters(char):
+    return int(Letters.index(char))
+def getSymbols(char):
+    return int(Symbols.index(char))
 
 while True:
 
     # User initial input
-    Encrypt_or_Decrypt = input("Encrypt or Decrypt: ")
-    Encrypt_or_Decrypt = Encrypt_or_Decrypt.capitalize()
+    Encrypt_or_Decrypt = input("Encrypt or Decrypt: ").capitalize()
 
     if (Encrypt_or_Decrypt) == "Decrypt" or (Encrypt_or_Decrypt) == "Encrypt":
         
@@ -55,9 +44,9 @@ while True:
         for char in phrase:
 
             if char in Letters:
-                ciphered = getLetters()
+                ciphered = getLetters(char)
                 # check users input
-                ciphered = check_encryptOrDecrypt(ciphered)
+                ciphered = check_encryptOrDecrypt(ciphered, Encrypt_or_Decrypt, shiftKey)
                 # wrapping letters list from 0 - 25 (A - Z)
                 ciphered = Letters[do_Letter_Wrapping(ciphered)]
                 # add letters to a list
@@ -65,17 +54,17 @@ while True:
             elif char in Spaces:
                 totalCiphered.append(char)
             elif char in Symbols:
-                ciphered = getSymbols()
+                ciphered = getSymbols(char)
                 # check users input
-                ciphered = check_encryptOrDecrypt(ciphered)
+                ciphered = check_encryptOrDecrypt(ciphered, Encrypt_or_Decrypt, shiftKey)
                 # wrapping symbol list 0 - 26
                 ciphered = Symbols[do_Symbol_Wrapping(ciphered)]
                 # add symbols to a list
                 totalCiphered.append(ciphered)
-            elif (char.isnumeric()):
-                ciphered = int(char)
+            elif char in Digits:
+                ciphered = getDigits(char)
                 # check for users input
-                ciphered = check_encryptOrDecrypt(ciphered)
+                ciphered = check_encryptOrDecrypt(ciphered, Encrypt_or_Decrypt, shiftKey)
                 # wrapping numbers around 1 - 9
                 ciphered = do_Number_Wrapping(ciphered)
                 # add numbers to a list
