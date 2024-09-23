@@ -1,42 +1,42 @@
 # Shift Key Encryption and Decryption
 import string
-# Lists
 
+# Lists
 Letters = list(string.ascii_uppercase)
 Symbols = list(string.punctuation)
 Spaces = list(string.whitespace)
 Digits = list(string.digits)
 
 # modules
+# check to see if user wants encryption or decryption
 def check_encryptOrDecrypt(ciphered, action, shiftKey):
     if action == "Decrypt":
         return ciphered - shiftKey
     elif action == "Encrypt":
         return ciphered + shiftKey
-def do_Symbol_Wrapping(ciphered):
-    return ciphered % len(Symbols)
-def do_Letter_Wrapping(ciphered):
-    return ciphered % len(Letters)
-def do_Number_Wrapping(ciphered):
-    return ciphered % 10
+# get the phrase and define if its a digit, letter, or symbol
 def getDigits(char):
     return int(Digits.index(char))
 def getLetters(char):
     return int(Letters.index(char))
 def getSymbols(char):
     return int(Symbols.index(char))
+# wrap around each list and shift the shift amount
+def do_Symbol_Wrapping(ciphered):
+    return ciphered % len(Symbols)
+def do_Letter_Wrapping(ciphered):
+    return ciphered % len(Letters)
+def do_Number_Wrapping(ciphered):
+    return ciphered % 10
 
 while True:
         # User initial inputs
         while True:
-            
             Encrypt_or_Decrypt = input("Encrypt or Decrypt: ").capitalize()
-
             if (Encrypt_or_Decrypt) != "Decrypt" and (Encrypt_or_Decrypt) != "Encrypt":
                 print("Error: Try Encrypt or Decrypt" + Encrypt_or_Decrypt)
                 continue
             break
-        
         phrase = input("Phrase: ")
         phrase = phrase.upper()
         while True:
@@ -45,14 +45,11 @@ while True:
                 print("Error: You need to enter a postive number!")
                 continue
             break
+
         shiftKey = int(shiftKey)
         totalCiphered = []
-
-
-
         # Cipher Logic
         for char in phrase:
-
             if char in Letters:
                 ciphered = getLetters(char)
                 # check users input
