@@ -1,14 +1,10 @@
 # Shift Key Encryption and Decryption
-
+import string
 # Lists
-Letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", 
-        "J", "K", "L", "M", "N", "O", "P", "Q", "R",
-        "S", "T", "U", "V", "W", "X", "Y", "Z"]
-Symbols = ["!", "@", "#", "$", "%", "^", "&", "*", 
-           "(", ")", "-", "_", "=", "+", "[", "]", 
-           "{", "}", "|", "\\", ":", ";", "\"", "'", 
-           "<", ">", ",", ".", "?", "/"]
-Spaces = [" "]
+
+Letters = list(string.ascii_uppercase)
+Symbols = list(string.punctuation)
+Spaces = list(string.whitespace)
 
 # modules
 def check_encryptOrDecrypt(ciphered):
@@ -67,7 +63,7 @@ while True:
                 # add letters to a list
                 totalCiphered.append(ciphered)
             elif char in Spaces:
-                totalCiphered.append(" ")
+                totalCiphered.append(char)
             elif char in Symbols:
                 ciphered = getSymbols()
                 # check users input
