@@ -22,9 +22,10 @@ def get_user_input():
             get_password()
             break
         else:
-            print("Error: create password or crytography")
+            print("Error: create password or cryptography")
 
 def get_password():
+    password.append("Password: ")
     while True:
         randomize = random.randrange(14, 16)
         for i in range(randomize):
@@ -42,10 +43,17 @@ def get_password():
                 symbol = symbols[random.randrange(0, 25)]
                 password.append(symbol)
         print("".join(password))
-        store_password()
+        get_website()
         return password
 
-def store_password():
+def get_website():
+    password.append(" Website: ")
+    user_input = input("Website for password: ")
+    password.append(user_input)
+    store_info()
+    return password
+
+def store_info():
     while True:
         user_input = input("Would you like to store your password? ").lower()
         if user_input == "yes":

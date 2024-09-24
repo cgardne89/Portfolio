@@ -37,6 +37,7 @@ while True:
                 print("Error: Try Encrypt or Decrypt" + Encrypt_or_Decrypt)
                 continue
             break
+
         phrase = input("Phrase: ")
         phrase = phrase.upper()
         while True:
