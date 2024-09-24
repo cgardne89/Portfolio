@@ -12,17 +12,14 @@ encrypted_password_storage = {}
 
 # modules
 
-def get_user_input():
+def get_user_input(question, modes):
     while True:
-        user_input = input("What would you like to do today? ").lower()
-        if user_input == "cryptography":
-            get_crytography_type()
-            break
-        if user_input == "create password":
-            get_password()
+        user_input = input(question).lower()
+        if user_input in modes:
+            modes[user_input]()
             break
         else:
-            print("Error: create password or cryptography")
+            print("Error: Please select a valid mode:\n" + ", ".join(modes) + " ")
 
 def get_password():
     password.append("Password: ")
@@ -43,14 +40,12 @@ def get_password():
                 symbol = symbols[random.randrange(0, 25)]
                 password.append(symbol)
         print("".join(password))
-        get_website()
         return password
 
 def get_website():
     password.append(" Website: ")
     user_input = input("Website for password: ")
     password.append(user_input)
-    store_info()
     return password
 
 def store_info():
@@ -59,11 +54,21 @@ def store_info():
         if user_input == "yes":
             print("storing....")
             with open("passwords.txt", "a") as file:
-                file.write("".join(password) + "\n")
+                file.write("".join(password))
                 print("password saved")
         break
 
-def get_crytography_type():
+def erase_info():
+    while True:
+        user_input = input("Would you like to remove all passwords? ").lower()
+        if user_input == "yes":
+            print("removing....")
+            with open("passwords.txt", "w") as file:
+                file.write("")
+                print("passwords removed")
+        break
+
+def get_cryptography_type():
     while True:
         crytography = input("Cryptography: ").lower()
         if crytography == "encrypt" or crytography == "decrypt":
@@ -92,5 +97,15 @@ def get_phrase():
                 break
         else:
             return phrase
+        
+
+
 # user input
-get_user_input()
+while True:
+    modes = {"create password": get_password, "cryptography": get_cryptography_type, 
+             "enter website": get_website, "save file": store_info,
+             "delete file": erase_info, "quit": quit}
+
+    question = "Mode: "
+    get_user_input(question, modes)
+
